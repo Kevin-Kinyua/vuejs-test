@@ -7,76 +7,153 @@ import UserDashboard from './components/UserDashboard.vue';
 
 <template>
   <div id="app">
+    <Orbit style="margin-left: -180px; margin-top: -150px;"/>
+    <UserActivity />
+  </div>
+</template>
+
+
+<!-- <template>
+  <div id="app">
     <h1>User Orbits</h1>
     <div v-if="loading">Loading...</div>
     <div v-else-if="error">Error: {{ error }}</div>
     <div v-else class="orbit-container" @wheel="onScroll">
-      <!-- ... existing orbit content ... -->
+      ... existing orbit content ...
     </div>
   </div>
-</template>
+</template> -->
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import Orbit from './components/icons/Orbit.vue';
 
 export default {
-  data() {
-    return {
-      orbits: [],
-      startDate: '2024-1-8',
-      loading: true,
-      error: null
-    };
-  },
-  methods: {
-    fetchOrbits() {
-      this.loading = true;
-      this.error = null;
-      axios.post('https://xsrr-l2ye-dpbj.f2.xano.io/api:oUvfVMO5', {
-        start_date: this.startDate
-      })
-      .then(response => {
-        this.orbits = response.data.dates.map(date => ({
-          date,
-          orbs: response.data.users.map(user => ({
-            image: user.avatar || 'https://via.placeholder.com/50'
-          }))
-        }));
-        this.loading = false;
-      })
-      .catch(error => {
-        console.error('Error fetching orbits:', error);
-        this.error = 'Failed to load orbits. Please try again.';
-      this.loading = false;
-        this.orbits = [
-          {
-            date: '2024-01-08',
-            orbs: [
-              { image: 'https://via.placeholder.com/50?text=User1' },
-              { image: 'https://via.placeholder.com/50?text=User2' }
-            ]
-          }
-        ];
-      });
-    },
-    onScroll(event) {
-      if (event.deltaY > 0) {
-        this.scrollDown();
-      } else {
-        this.scrollUp();
-      }
-    },
-    scrollDown() {
-      console.log('Scrolling down');
-    },
-    scrollUp() {
-      console.log('Scrolling up');
-    }
-  },
-  mounted() {
-    this.fetchOrbits();
+  name: 'App',
+
+  components: {
+    Orbit
   }
+
+  //   data() {
+//     return {
+//       orbits: [],
+//       startDate: '2024-1-8',
+//       loading: true,
+//       error: null
+//     };
+//   },
+//   methods: {
+//     fetchOrbits() {
+//       this.loading = true;
+//       this.error = null;
+//       axios.post('https://xsrr-l2ye-dpbj.f2.xano.io/api:oUvfVMO5/startDate', {
+//         start_date: this.startDate
+//       })
+//       .then(response => {
+//         this.orbits = response.data.dates.map(date => ({
+//           date,
+//           orbs: response.data.users.map(user => ({
+//             image: user.avatar || 'https://via.placeholder.com/50'
+//           }))
+//         }));
+//         this.loading = false;
+//       })
+//       .catch(error => {
+//         console.error('Error fetching orbits:', error);
+//         this.error = 'Failed to load orbits. Please try again.';
+//       this.loading = false;
+//         this.orbits = [
+//           {
+//             date: '2024-01-08',
+//             orbs: [
+//               { image: 'https://via.placeholder.com/50?text=User1' },
+//               { image: 'https://via.placeholder.com/50?text=User2' }
+//             ]
+//           }
+//         ];
+//       });
+//     },
+//     onScroll(event) {
+//       if (event.deltaY > 0) {
+//         this.scrollDown();
+//       } else {
+//         this.scrollUp();
+//       }
+//     },
+//     scrollDown() {
+//       console.log('Scrolling down');
+//     },
+//     scrollUp() {
+//       console.log('Scrolling up');
+//     }
+//   },
+//   mounted() {
+//     this.fetchOrbits();
+//   }
+// };
+
 };
+
+
+// export default {
+//   data() {
+//     return {
+//       orbits: [],
+//       startDate: '2024-1-8',
+//       loading: true,
+//       error: null
+//     };
+//   },
+//   methods: {
+//     fetchOrbits() {
+//       this.loading = true;
+//       this.error = null;
+//       axios.post('https://xsrr-l2ye-dpbj.f2.xano.io/api:oUvfVMO5/startDate', {
+//         start_date: this.startDate
+//       })
+//       .then(response => {
+//         this.orbits = response.data.dates.map(date => ({
+//           date,
+//           orbs: response.data.users.map(user => ({
+//             image: user.avatar || 'https://via.placeholder.com/50'
+//           }))
+//         }));
+//         this.loading = false;
+//       })
+//       .catch(error => {
+//         console.error('Error fetching orbits:', error);
+//         this.error = 'Failed to load orbits. Please try again.';
+//       this.loading = false;
+//         this.orbits = [
+//           {
+//             date: '2024-01-08',
+//             orbs: [
+//               { image: 'https://via.placeholder.com/50?text=User1' },
+//               { image: 'https://via.placeholder.com/50?text=User2' }
+//             ]
+//           }
+//         ];
+//       });
+//     },
+//     onScroll(event) {
+//       if (event.deltaY > 0) {
+//         this.scrollDown();
+//       } else {
+//         this.scrollUp();
+//       }
+//     },
+//     scrollDown() {
+//       console.log('Scrolling down');
+//     },
+//     scrollUp() {
+//       console.log('Scrolling up');
+//     }
+//   },
+//   mounted() {
+//     this.fetchOrbits();
+//   }
+// };
 </script>
 
 <style>
