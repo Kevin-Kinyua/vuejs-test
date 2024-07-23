@@ -12,7 +12,7 @@
   
   <style scoped>
   .user-dashboard {
-    /* Styles for your dashboard */
+    /* Styles for dashboard */
   }
   </style>
   

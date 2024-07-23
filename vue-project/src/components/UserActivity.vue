@@ -12,7 +12,7 @@
   
   <style scoped>
   .user-activity {
-    /* Styles for your activity */
+    /* Styles for activity */
   }
   </style>
   
